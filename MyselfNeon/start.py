@@ -69,7 +69,7 @@ async def send_start(client: Client, message: Message):
     reply_markup = InlineKeyboardMarkup(buttons)
     await client.send_message(
         chat_id=message.chat.id, 
-        text=f"<b>Hello {message.from_user.mention} 🖐️ \n\nI am Save Restricted Content Bot.\nDeveloped by NeonAnurag.\n\nI can send you restricted content by its post link.\n\nFor downloading restricted content /login first.\n\nKnow how to use bot by - /help</b>", 
+        text=f"<b>Hello {message.from_user.mention} 🖐️ \n\nI am Save Restricted Content Bot.\nDeveloped by NeonAnurag.\n\nI can send you restricted content from Channels/Bots by its post links.\n\nFor downloading Restricted contents you need to /login first.\n\nKnow how to use bot by - /help</b>", 
         reply_markup=reply_markup, 
         reply_to_message_id=message.id
     )

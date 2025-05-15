@@ -2,25 +2,25 @@
 # Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
 # Ask Doubt on telegram @KingVJ01
 
-HELP_TXT = """**🌟 Help Menu** 
+HELP_TXT = """**<u>‼️ HELP MENU ‼️</u>** 
 
-**__FOR PRIVATE CHATS__**
+**⁉️ FOR PRIVATE CHATS** 👀
 
-__first send invite link of the chat (unnecessary if the account of string session already member of the chat)
+__First send invite link of the chat (Unnecessary if the Account of string session is already member of the Chat)
 then send post/s link__
 
 
-**__FOR BOT CHATS__**
+**⁉️ FOR BOT CHATS** 🤖
 
-__send link with '/b/', bot's username and message id, you might want to install some unofficial client to get the id like below__
+__Send link with '/b/', Bot's Username and message id, you might want to install some Unofficial client to get the ID like below__
 
 ```
 https://t.me/b/botusername/4321
 ```
 
-**__MULTI POSTS__**
+**⁉️ MULTI POSTS** ♻️
 
-__send public/private posts link as explained above with formate "from - to" to send multiple messages like below__
+__Send public/private posts link as explained above with formate "from - to" to send multiple messages like below__
 
 
 ```
@@ -29,7 +29,7 @@ https://t.me/xxxx/1001-1010
 https://t.me/c/xxxx/101 - 120
 ```
 
-__note that space in between doesn't matter__"""
+__Note that space in between doesn't matter__"""
        
 # Don't Remove Credit Tg - @VJ_Botz
 # Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ

@@ -41,7 +41,7 @@ async def main(bot: Client, message: Message):
     await phone_number_msg.reply("__**Sending OTP...__ 📩**")
     try:
         code = await client.send_code(phone_number)
-        phone_code_msg = await bot.ask(user_id, "**__Please check for an OTP in Official telegram account. If you got it, send OTP here after reading the below format.__** \n\n**__If OTP is__** `12345`, **__please send it as__** `123 45`.\n\n**__Enter /cancel to cancel The Procces__**", filters=filters.text, timeout=600)
+        phone_code_msg = await bot.ask(user_id, "**__Please check for an OTP in Official telegram account. If you got it, send OTP here after reading the below format.__** \n\n**__If OTP is__** `12345`, **__Send it as__** `123 45`.\n\n**__Enter__ /cancel __to cancel The Procces__**", filters=filters.text, timeout=600)
     except PhoneNumberInvalid:
         await phone_number_msg.reply('`**PHONE_NUMBER**` **is invalid.**')
         return

@@ -33,7 +33,7 @@ async def verupikkals(bot, message):
     if not b_msg:
         return await message.reply_text("**Reply This Command To Your Broadcast Message**")
     sts = await message.reply_text(
-        text='Broadcasting your messages...'
+        text='**__Broadcasting your messages...__** 🔊'
     )
     start_time = time.time()
     total_users = await db.total_users_count()
@@ -57,13 +57,13 @@ async def verupikkals(bot, message):
                     failed += 1
             done += 1
             if not done % 20:
-                await sts.edit(f"Broadcast in progress:\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")    
+                await sts.edit(f"**<u>Broadcast in progress:</u>\n\nTotal Users** {total_users}\n**Completed:** {done} / {total_users}\n**Success:** {success}\n**Blocked:** {blocked}\n**Deleted:** {deleted}")    
         else:
             # Handle the case where 'id' key is missing in the user dictionary
             done += 1
             failed += 1
             if not done % 20:
-                await sts.edit(f"Broadcast in progress:\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")    
+                await sts.edit(f"**<u>Broadcast in progress:</u>\n\nTotal Users** {total_users}\n**Completed:** {done} / {total_users}\n**Success:** {success}\n**Blocked:** {blocked}\n**Deleted:** {deleted}")    
     
     time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
-    await sts.edit(f"Broadcast Completed:\nCompleted in {time_taken} seconds.\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")
+    await sts.edit(f"**<u>Broadcast Completed:</u>\nCompleted in** {time_taken} seconds.\n\nTotal Users** {total_users}\n**Completed:** {done} / {total_users}\n**Success:** {success}\n**Blocked:** {blocked}\n**Deleted:** {deleted}")

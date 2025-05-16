@@ -43,7 +43,7 @@ async def upstatus(client, statusfile, message, chat):
         with open(statusfile, "r") as upread:
             txt = upread.read()
         try:
-            await client.edit_message_text(chat, message.id, f"**Uploaded:** **{txt}**")
+            await client.edit_message_text(chat, message.id, f"**Uploading...⚡** **{txt}**")
             await asyncio.sleep(10)
         except:
             await asyncio.sleep(5)

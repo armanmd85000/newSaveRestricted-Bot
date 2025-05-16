@@ -23,7 +23,7 @@ async def logout(client, message):
     if user_data is None:
         return 
     await db.set_session(message.from_user.id, session=None)  
-    await message.reply("**__Logout Successfully__** 🫡")
+    await message.reply("**__Logout Successfully__** 💢")
 
 @Client.on_message(filters.private & ~filters.forwarded & filters.command(["login"]))
 async def main(bot: Client, message: Message):
@@ -38,7 +38,7 @@ async def main(bot: Client, message: Message):
     phone_number = phone_number_msg.text
     client = Client(":memory:", API_ID, API_HASH)
     await client.connect()
-    await phone_number_msg.reply("__**Sending OTP...__**")
+    await phone_number_msg.reply("__**Sending OTP...__ 📩**")
     try:
         code = await client.send_code(phone_number)
         phone_code_msg = await bot.ask(user_id, "**__Please check for an OTP in Official telegram account. If you got it, send OTP here after reading the below format.__** \n\n**__If OTP is__** `12345`, **__please send it as__** `123 45`.\n\n**__Enter /cancel to cancel The Procces__**", filters=filters.text, timeout=600)
@@ -46,30 +46,30 @@ async def main(bot: Client, message: Message):
         await phone_number_msg.reply('`**PHONE_NUMBER**` **is invalid.**')
         return
     if phone_code_msg.text=='/cancel':
-        return await phone_code_msg.reply('<b>__Process cancelled !__</b>')
+        return await phone_code_msg.reply('<b>__Process cancelled !__ 💢</b>')
     try:
         phone_code = phone_code_msg.text.replace(" ", "")
         await client.sign_in(phone_number, code.phone_code_hash, phone_code)
     except PhoneCodeInvalid:
-        await phone_code_msg.reply('**OTP __is invalid.__**')
+        await phone_code_msg.reply('**OTP __is invalid.__ ❌**')
         return
     except PhoneCodeExpired:
-        await phone_code_msg.reply('**OTP __is expired.__**')
+        await phone_code_msg.reply('**OTP __is expired.__ 🥲**')
         return
     except SessionPasswordNeeded:
-        two_step_msg = await bot.ask(user_id, '**__Your account has enabled two-step verification. Please provide the password 🙂.\n\nEnter /cancel to cancel The Procces__**', filters=filters.text, timeout=300)
+        two_step_msg = await bot.ask(user_id, '**__Your account has enabled two-step verification. Please provide the password.\n\nEnter /cancel to cancel The Procces__**', filters=filters.text, timeout=300)
         if two_step_msg.text=='/cancel':
-            return await two_step_msg.reply('<b>__Process cancelled !__</b>')
+            return await two_step_msg.reply('<b>__Process cancelled !__ 💢</b>')
         try:
             password = two_step_msg.text
             await client.check_password(password=password)
         except PasswordHashInvalid:
-            await two_step_msg.reply('**Invalid Password Provided**')
+            await two_step_msg.reply('**__Invalid Password Provided__** ❌')
             return
     string_session = await client.export_session_string()
     await client.disconnect()
     if len(string_session) < SESSION_STRING_SIZE:
-        return await message.reply('<b>invalid session sring</b>')
+        return await message.reply('<b>__Invalid session string__</b>')
     try:
         user_data = await db.get_session(message.from_user.id)
         if user_data is None:
@@ -78,7 +78,7 @@ async def main(bot: Client, message: Message):
             await db.set_session(message.from_user.id, session=string_session)
     except Exception as e:
         return await message.reply_text(f"<b>ERROR IN LOGIN:</b> `{e}`")
-    await bot.send_message(message.from_user.id, "<b>Account Login Successfully.\n\nIf You Get Any Error Related To AUTH KEY Then /logout first and /login again</b>")
+    await bot.send_message(message.from_user.id, "<b><i>Account Login Successfully 🎊.\n\nIf You Get Any Error Related To AUTH KEY Then /logout and /login again</i></b>")
 
 
 # Don't Remove Credit Tg - @VJ_Botz

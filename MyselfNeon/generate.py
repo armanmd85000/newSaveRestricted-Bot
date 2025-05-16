@@ -1,6 +1,3 @@
-# Don't Remove Credit Tg - @VJ_Botz
-# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
-# Ask Doubt on telegram @KingVJ01
 
 import traceback
 from pyrogram.types import Message
@@ -26,43 +23,43 @@ async def logout(client, message):
     if user_data is None:
         return 
     await db.set_session(message.from_user.id, session=None)  
-    await message.reply("**Logout Successfully** ♦")
+    await message.reply("**__Logout Successfully__** 🫡")
 
 @Client.on_message(filters.private & ~filters.forwarded & filters.command(["login"]))
 async def main(bot: Client, message: Message):
     user_data = await db.get_session(message.from_user.id)
     if user_data is not None:
-        await message.reply("**Your Are Already Logged In. First /logout Your Old Session. Then Do Login.**")
+        await message.reply("**<i>Your Are Already Logged In.\nFirst /logout Your Old Session. Then Login**</i>")
         return 
     user_id = int(message.from_user.id)
-    phone_number_msg = await bot.ask(chat_id=user_id, text="<b>Please send your phone number which includes country code</b>\n<b>Example:</b> <code>+13124562345, +9171828181889</code>")
+    phone_number_msg = await bot.ask(chat_id=user_id, text="<b><i>Please send your phone number which includes country code</i> ☎️</b>\n<b>__Example:__</b> \n<code>+13124562345, \n+9171828181889</code>")
     if phone_number_msg.text=='/cancel':
-        return await phone_number_msg.reply('<b>process cancelled !</b>')
+        return await phone_number_msg.reply('<b>__Process cancelled !__</b>')
     phone_number = phone_number_msg.text
     client = Client(":memory:", API_ID, API_HASH)
     await client.connect()
-    await phone_number_msg.reply("Sending OTP...")
+    await phone_number_msg.reply("__**Sending OTP...__**")
     try:
         code = await client.send_code(phone_number)
-        phone_code_msg = await bot.ask(user_id, "Please check for an OTP in official telegram account. If you got it, send OTP here after reading the below format. \n\nIf OTP is `12345`, **please send it as** `1 2 3 4 5`.\n\n**Enter /cancel to cancel The Procces**", filters=filters.text, timeout=600)
+        phone_code_msg = await bot.ask(user_id, "**__Please check for an OTP in Official telegram account. If you got it, send OTP here after reading the below format.__** \n\n**__If OTP is__** `12345`, **__please send it as__** `123 45`.\n\n**__Enter /cancel to cancel The Procces__**", filters=filters.text, timeout=600)
     except PhoneNumberInvalid:
-        await phone_number_msg.reply('`PHONE_NUMBER` **is invalid.**')
+        await phone_number_msg.reply('`**PHONE_NUMBER**` **is invalid.**')
         return
     if phone_code_msg.text=='/cancel':
-        return await phone_code_msg.reply('<b>process cancelled !</b>')
+        return await phone_code_msg.reply('<b>__Process cancelled !__</b>')
     try:
         phone_code = phone_code_msg.text.replace(" ", "")
         await client.sign_in(phone_number, code.phone_code_hash, phone_code)
     except PhoneCodeInvalid:
-        await phone_code_msg.reply('**OTP is invalid.**')
+        await phone_code_msg.reply('**OTP __is invalid.__**')
         return
     except PhoneCodeExpired:
-        await phone_code_msg.reply('**OTP is expired.**')
+        await phone_code_msg.reply('**OTP __is expired.__**')
         return
     except SessionPasswordNeeded:
-        two_step_msg = await bot.ask(user_id, '**Your account has enabled two-step verification. Please provide the password.\n\nEnter /cancel to cancel The Procces**', filters=filters.text, timeout=300)
+        two_step_msg = await bot.ask(user_id, '**__Your account has enabled two-step verification. Please provide the password 🙂.\n\nEnter /cancel to cancel The Procces__**', filters=filters.text, timeout=300)
         if two_step_msg.text=='/cancel':
-            return await two_step_msg.reply('<b>process cancelled !</b>')
+            return await two_step_msg.reply('<b>__Process cancelled !__</b>')
         try:
             password = two_step_msg.text
             await client.check_password(password=password)

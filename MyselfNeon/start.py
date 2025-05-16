@@ -90,14 +90,14 @@ async def send_cancel(client: Client, message: Message):
     batch_temp.IS_BATCH[message.from_user.id] = True
     await client.send_message(
         chat_id=message.chat.id, 
-        text="**Batch Successfully Cancelled.**"
+        text="**__Batch Successfully Cancelled.__ 💢**"
     )
 
 @Client.on_message(filters.text & filters.private)
 async def save(client: Client, message: Message):
     if "https://t.me/" in message.text:
         if batch_temp.IS_BATCH.get(message.from_user.id) == False:
-            return await message.reply_text("**One Task Is Already Processing. Wait For Complete It. If You Want To Cancel This Task Then Use - /cancel**")
+            return await message.reply_text("**__One Task Is Already Processing. Wait For Complete It. If You Want To Cancel This Task Then Use __- /cancel**")
         datas = message.text.split("/")
         temp = datas[-1].replace("?single","").split("-")
         fromID = int(temp[0].strip())
@@ -110,7 +110,7 @@ async def save(client: Client, message: Message):
             if batch_temp.IS_BATCH.get(message.from_user.id): break
             user_data = await db.get_session(message.from_user.id)
             if user_data is None:
-                await message.reply("**For Downloading Restricted Content You Have To /login First.**")
+                await message.reply("**__For Downloading Restricted Content \nYou need To /login First.__**")
                 batch_temp.IS_BATCH[message.from_user.id] = True
                 return
             try:
@@ -118,7 +118,7 @@ async def save(client: Client, message: Message):
                 await acc.connect()
             except:
                 batch_temp.IS_BATCH[message.from_user.id] = True
-                return await message.reply("**Your Login Session Expired. So /logout First Then Login Again By - /login**")
+                return await message.reply("**__Your Login Session Expired. So /logout and Login Again By__ - /login**")
             
             # private
             if "https://t.me/c/" in message.text:
@@ -145,7 +145,7 @@ async def save(client: Client, message: Message):
                 try:
                     msg = await client.get_messages(username, msgid)
                 except UsernameNotOccupied: 
-                    await client.send_message(message.chat.id, "The username is not occupied by anyone", reply_to_message_id=message.id)
+                    await client.send_message(message.chat.id, "__The username is not occupied by anyone__", reply_to_message_id=message.id)
                     return
                 try:
                     await client.copy_message(message.chat.id, msg.chat.id, msg.id, reply_to_message_id=message.id)

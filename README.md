@@ -2,7 +2,7 @@
     SaveRestrictions-Bot
 </h2>
 
-<img src="https://envs.sh/oPe.jpg" alt="logo" target="/blank">
+<img src="https://envs.sh/7gW.jpg" alt="logo" target="/blank">
 
 _**Watch on Telegram as [RestrictionBot](https://t.me/SaveRestrictionsBot)**_
 

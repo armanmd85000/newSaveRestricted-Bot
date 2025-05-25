@@ -61,15 +61,15 @@ async def send_start(client: Client, message: Message):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
     buttons = [[
-        InlineKeyboardButton("👨‍💻 Dᴇᴠᴇʟᴏᴘᴇʀ", url = "https://t.me/MyselfNeon")
+        InlineKeyboardButton("👨‍💻 Dᴇᴠᴇʟᴏᴘᴇʀ", url = "https://t.me/light47")
     ],[
-        InlineKeyboardButton('♻️ Sᴜᴘᴘᴏʀᴛ', url='https://t.me/+o1s-8MppL2syYTI9'),
-        InlineKeyboardButton('📢 Uᴘᴅᴀᴛᴇs', url='https://t.me/NeonFiles')
+        InlineKeyboardButton('♻️ Sᴜᴘᴘᴏʀᴛ', url='https://t.me/Thecourseguy0'),
+        InlineKeyboardButton('📢 Uᴘᴅᴀᴛᴇs', url='https://t.me/Thecourseguy0')
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     await client.send_message(
         chat_id=message.chat.id, 
-        text=f"<b><i>Hello</i> {message.from_user.mention} 🖐️ <i>\n\nI am Save Restricted Content Bot.\nDeveloped by <a href='https://t.me/MyselfNeon'>NeonAnurag</a>.\n\nI can send you restricted content from Channels / Bots by its post links.\n\nFor downloading Restricted contents you need to /login first.\n\nKnow how to use me click /help.</i></b>", 
+        text=f"<b><i>Hello</i> {message.from_user.mention} 🖐️ <i>\n\nI am Save Restricted Content Bot.\nDeveloped by <a href='https://t.me/light47'>NeonAnurag</a>.\n\nI can send you restricted content from Channels / Bots by its post links.\n\nFor downloading Restricted contents you need to /login first.\n\nKnow how to use me click /help.</i></b>", 
         reply_markup=reply_markup, 
         reply_to_message_id=message.id
     )
